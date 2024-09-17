@@ -1,11 +1,15 @@
 # Sistema para gerenciamento de Estoque/Vendas de uma loja de informática.
 
 ### Requsitos do Sistema
- - Sistema Operacional: LINUX
+ - Sistema Operacional: Windows
  - Linguagem de Programação: Python 🐍
  - Banco de Dados: SQLite3
  
-### Comando para Compilar e executar o programa pelo terminal LINUX
+### Instalação
+
+- Baixar o repositório
+       $ git clone "https://github.com/bentogomes19/projeto-lojaInfo-Python.git"
+- Comando para Compilar e executar o programa pelo terminal WINDOWS
        $ python main.py
 
 ### Menu de Opção
