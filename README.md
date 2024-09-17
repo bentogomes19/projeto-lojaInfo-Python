@@ -7,9 +7,9 @@
  
 ### Instalação
 
-- Baixar o repositório
+#### Baixar o repositório
        $ git clone "https://github.com/bentogomes19/projeto-lojaInfo-Python.git"
-- Comando para Compilar e executar o programa pelo terminal WINDOWS
+#### Comando para Compilar e executar o programa pelo terminal WINDOWS
        $ python main.py
 
 ### Menu de Opção
