@@ -82,18 +82,19 @@
     
 import os
 from clientes import Clientes
+from produtos import Produtos
 from consultas import Consultas
-
 class Menu():
     def __init__(self):     
         self.op = None
 
-    def MenuPrincipal(self):        
+    def MenuPrincipal(self):   
+        produto = Produtos()     
         cliente = Clientes()
         consulta = Consultas()
         x = False
         while not x:
-            os.system("clear")
+            os.system("cls") # os.system("clear") # LINUX
             print("******** SISTEMA DE GERENCIAMENTO DE ESTOQUE ********")
             print("                 MENU DE OPÇÕES")
             print("[01] - Cadastrar Clientes")
@@ -107,15 +108,15 @@ class Menu():
             self.op = int(input("Digite uma opção: "))                  
             
             if self.op == 1:
-                cliente.CadastrarClientes()
+                cliente.CadastrarClientes() # CADASTRO DE CLIENTES ok
             elif self.op == 2:
-                input("A ser desenvolvido")
+                produto.CadastrarProdutos() # CADASTRO DE PRODUTOS ok
             elif self.op == 3:
-                cliente.MostrarClientesCadastrados()
+                cliente.MostrarClientesCadastrados() # LISTA OS CLIENTES CADASTRADOS ok
             elif self.op == 4:
-                input("A ser desenvolvido")
+                produto.MostrarProdutosCadastrados() # LISTA OS PRODUTOS CADASTRADOS NO SISTEMA ok
             elif self.op == 5:
-                input("A ser desenvolvido")
+                input("A ser desenvolvido") # BREAKPOINT !!!!
             elif self.op == 6:
                 input("A ser desenvolvido")
             elif self.op == 7:
