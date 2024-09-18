@@ -71,7 +71,8 @@ class Produtos(db): # CLASSE FILHA Produtos() -> CLASSE MÃE db()
             print(f"\n\nESTOQUE TOTAL: {soma_estoque}")
             print(f'\nVALOR TOTAL DO ESTOQUE: R$ {soma_valor}')
             print(f'TOTAL DE PRODUTOS: {soma_produtos}')
-            input()
+            input("Pressione Enter para continuar...")
+            
         
     # MÉTODO PARA EDITAR OS DADOS DO PRODUTO
     def EditarDadosProduto(self, codigo, produto):
