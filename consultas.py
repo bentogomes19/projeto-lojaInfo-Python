@@ -1,4 +1,5 @@
 import os
+import time
 from database import db
 from clientes import Clientes
 from produtos import Produtos
@@ -20,8 +21,7 @@ class Consultas(db):
             print("[07] - CONSULTAS")
             print("01. CLIENTES")
             print("02. PRODUTOS")
-            print("03. VENDAS")
-            print("04. VOLTAR")
+            print("03. VOLTAR")
             self.op = int(input("Digite uma opção: "))
             
             if self.op == 1:
@@ -29,8 +29,6 @@ class Consultas(db):
             elif self.op == 2:
                 self.ProdutosConsulta()
             elif self.op == 3:
-                input("A se desenvolver")
-            elif self.op == 4:
                 x = True
                 return
             else:
@@ -63,10 +61,35 @@ class Consultas(db):
             print(f"Situação: {situacao}")
             
             # EDITAR OS DADOS
-            print("\nEDITAR DADOS -> [01] - NOME # [02] - EMAIL # [03] - TELEFONE # [04] - CPF # [05] - SITUAÇÃO")
-            self.cod = int(input("DIgite uma opção para editar um dado: "))
-            cliente.EditarDadosCliente(self.cod, cliente_dados) # chama o método que irá editar os dados
-            
+            while True:
+                opcao = int(input("[01] - EDITAR DADOS ## [02] - EXCLUIR DADOS: "))
+                if opcao == 1 or opcao == 2:
+                    break
+                else:
+                     input("Código Inválido...Tente novamente...")
+        
+            if opcao == 1:
+                while True:
+                    print("\nEDITAR DADOS -> [01] - NOME # [02] - EMAIL # [03] - TELEFONE # [04] - CPF # [05] - SITUAÇÃO")
+                    self.cod = int(input("DIgite uma opção para editar um dado: "))
+                    if self.cod > 5:
+                        print("Entrada inválida...Tente novamente....")
+                        time.sleep(2)
+                    else:
+                        break
+                    
+                cliente.EditarDadosCliente(self.cod, cliente_dados) # chama o método que irá editar os dados
+            else:
+                while True:
+                    resp = str(input("Deseja Excluir todos os dados desse cliente [S][N]?: ")).upper()
+                    if resp != "S" and resp != "N":
+                        input("Entrada inválida...Tente novamente")
+                    else :
+                        break
+                
+                self.ExcluirCliente(cod_cli) # COMANDO SQL PARA EXCLUIR O CLIENTE
+                print("Produto exluido com sucesso...")
+                time.sleep(2) 
         else:
             input("cliente não encontrado..")
             return
@@ -95,11 +118,29 @@ class Consultas(db):
             print(f"QUANTIDADE: {quantidade_estoque}")
             print(f"VALOR UNITÁRIO : R$ {valor_unit}")
 
-        # EDITAR OS DADOS
-            print("\nEDITAR DADOS -> [01] - MARCA # [02] - NOME # [03] - QUANTIDADE # [04] - VALOR UNITÁRIO")
-            self.cod = int(input("Digite uma opção para editar um dado: "))
-            produto.EditarDadosProduto(self.cod, produto_encontrado) # chama o método que irá editar os dados
-            
+            # EDITAR OS DADOS
+            while True:
+                opcao = int(input("[01] - EDITAR DADOS ## [02] - EXCLUIR DADOS: "))
+                if opcao == 1 or opcao == 2:
+                    break
+                else:
+                     input("Código Inválido...Tente novamente...")
+        
+            if opcao == 1:
+                print("\nEDITAR DADOS -> [01] - NOME # [02] - EMAIL # [03] - TELEFONE # [04] - CPF # [05] - SITUAÇÃO")
+                self.cod = int(input("DIgite uma opção para editar um dado: "))
+                produto.EditarDadosProduto(self.cod, produto_encontrado) # chama o método que irá editar os dados
+            else:
+                while True:
+                    resp = str(input("Deseja Excluir todos os dados desse produto [S][N]?: ")).upper()
+                    if resp != "S" and resp != "N":
+                        input("Entrada inválida...Tente novamente")
+                    else :
+                        break
+                
+                self.ExcluirProduto(cod_produto) # COMANDO SQL PARA EXCLUIR O PRODUTO   
+                print("Produto exluido com sucesso...")
+                time.sleep(2)   
         else:
             input("cliente não encontrado..")
             return
