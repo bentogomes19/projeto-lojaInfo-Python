@@ -1,9 +1,9 @@
-# Sistema para gerenciamento de Estoque/Vendas de uma loja de informática.
+# Python 🐍 Controle de Estoque/Vendas - loja de informática.
 
 ### Requsitos do Sistema
- - Sistema Operacional: Windows
+ - Sistema Operacional: Windows 🖥
  - Linguagem de Programação: Python 🐍
- - Banco de Dados: SQLite3
+ - Banco de Dados: SQLite3 
  
 ### Instalação
 
@@ -67,13 +67,13 @@
 #### Opção 02: Deve permitir que o usuário insira os seguintes dados (MARCA, NOME, QUANTIDADE EM ESTOQUE, PREÇO (R$))
         cod_produto -> gerado automaticamente pelo banco de dados.
         data_registro -> gerado automaticamente pelo banco de dados.
-        Se a quantidade de um produto estiver abaixo de 10 mostrar mensagem "ESTOQUE EM BAIXA!!"
+        Permitir que o usuário possa ver e confirmar seus dados.
 
 #### Opção 03: Mostrar todos os clientes cadastrados no sistema.
-       Fazer uma lista de todos os clientes cadastrados com os dados (COD_CLIENTE, NOME, EMAIL, TELEFONE, DATA_REGISTRO, SITUAÇÃO)
+       Fazer uma lista de todos os clientes cadastrados com os dados (COD_CLIENTE, NOME, EMAIL, TELEFONE, CPF, SITUAÇÃO)
 
 #### Opção 04: Mostrar todos os produtos cadastrados no sistema.
-     # Mostrar ao usuário uma lista com todos os produtos cadastrados no sistema com os seguintes dados (COD_PRODUTO, NOME, MARCA, QUANTIDADE_ESTOQUE, VALOR_UNITARIO, DATA_REGISTRO)
+     # Mostrar ao usuário uma lista com todos os produtos cadastrados no sistema com os seguintes dados (COD_PRODUTO, NOME, MARCA, QUANTIDADE_ESTOQUE, VALOR_UNITARIO)
 
      #  Ao final da listagem mostrar um relatório com um somatório de produtos cadastrados, ou seja, mostrar a quantidade de produtos cadastrados.
      # Mostrar ao final da listagem o valor total que há no estoque.
@@ -85,6 +85,8 @@
         # Se a quantidade inserida pelo usuário for maior do que armazenada no estoque, mostrar mensagem
         # Após efetuar uma venda e respeitar todas as validações, mostrar mensagem.
         # Efetivar baixa no sistema após o usuário confirmar a venda.
+        # O usuário so pode cadastrar uma venda por vez não permitindo cadastro de mais produtos numa mesma venda
+        (regra de negócio)
 
 #### Opção 06: Mostrar todas as vendas que foram efetuadas no sistema.
        # Fazer uma listagem com todas as vendas feitas com os seguinte dados 
@@ -114,35 +116,28 @@
                         1.1 Ao final da alteração mostrar mensagem
                     # Caso o produto não esteja no banco de dados mostrar mensagem.
 
-            # - 03. VENDAS
-                # Solicitar ao usuário O codigo da venda, caso ele não saiba o codigo, deverá digitar 6 para listar todas as vendas cadastradas
-                - Caso uma venda esteja cadastrada mostrar menu
-                        -> 1. EDITAR DADOS 2. EXCLUIR VENDA
-                            1. O usuário deverá selecionar quais dados ele quer editar (CODIGO DO CLIENTE, CODIGO DO PRODUTO, QUANTIDADE, VALOR FINAL)
-                            1.1 Ao final da alteração mostrar mensagem
-                        - Caso a venda não esteja cadastrada mostrar mensagem.
-
 ### ** REGRAS GERAIS ***
 ### - Realizar todas as validações de codigo para clientes, produtos e vendas
 ### - os codigos são valores de 4 dígitos gerados aleatoriamente pelo sistema e não pode ser alterado
 ### - Ao excluir um cliente, produto ou uma venda dar baixa no banco de dados
 
 
-# Árvore do Repositório
-projeto_loja/
-        ├── __pycache__/
-        │   ├── clientes.cpython-3x.pyc
-        │   ├── consultas.cpython-3x.pyc
-        │   ├── database.cpython-3x.pyc
-        │   └── ...
-        ├── clientes.py
-        ├── consultas.py
-        ├── database.py
-        ├── DataBaseLoja.db
-        ├── produtos.py
-        ├── pain.y
-        ├── README.md
-        └── vendas.py
+# Árvore do Repositório 🌲
+              projeto_loja/
+                     ├── __pycache__/
+                     │   ├── clientes.cpython-3x.pyc
+                     │   ├── consultas.cpython-3x.pyc
+                     │   ├── database.cpython-3x.pyc
+                     │   └── produtos.cpython-3x.pyc
+                     │   └── vendas.cpython-3x.pyc
+                     ├── clientes.py
+                     ├── consultas.py
+                     ├── database.py
+                     ├── DataBaseLoja.db
+                     ├── produtos.py
+                     ├── pain.y
+                     ├── README.md
+                     └── vendas.py
 
 
 
