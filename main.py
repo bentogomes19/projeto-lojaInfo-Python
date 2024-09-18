@@ -48,7 +48,6 @@
 #       - MENU DE OPÇÕES
 #       - 01. CLIENTES
 #       - 02. PRODUTOS
-#       - 03. VENDAS
 #       
 #       - 01. CLIENTES
 #       - Solicitar ao usuário o nome ou o codigo do cliente, caso ele não saiba o nome, deverá digitar 3 para listar todos os clientes cadastrados
@@ -67,23 +66,16 @@
 #               1.1 Ao final da alteração mostrar mensagem
 #       - Caso o produto não esteja no banco de dados mostrar mensagem.
 
-#       - 03. VENDAS
-#       - Solicitar ao usuário O codigo da venda, caso ele não saiba o codigo, deverá digitar 6 para listar todas as vendas cadastradas
-#       - Caso uma venda esteja cadastrada mostrar menu
-#           - 1. EDITAR DADOS 2. EXCLUIR VENDA
-#               1. O usuário deverá selecionar quais dados ele quer editar (CODIGO DO CLIENTE, CODIGO DO PRODUTO, QUANTIDADE, VALOR FINAL)
-#               1.1 Ao final da alteração mostrar mensagem
-#       - Caso a venda não esteja cadastrada mostrar mensagem.
-
 # ** REGRAS GERAIS ***
 # - Realizar todas as validações de codigo para clientes, produtos e vendas
 # - os codigos são valores de 4 dígitos gerados aleatoriamente pelo sistema e não pode ser alterado
-# - Ao excluir um cliente, produto ou uma venda dar baixa no banco de dados
+# - Ao excluir um cliente ou produto dar baixa no banco de dados
     
 import os
 from clientes import Clientes
 from produtos import Produtos
 from consultas import Consultas
+from vendas import Vendas
 class Menu():
     def __init__(self):     
         self.op = None
@@ -91,6 +83,7 @@ class Menu():
     def MenuPrincipal(self):   
         produto = Produtos()     
         cliente = Clientes()
+        venda = Vendas()
         consulta = Consultas()
         x = False
         while not x:
@@ -116,11 +109,11 @@ class Menu():
             elif self.op == 4:
                 produto.MostrarProdutosCadastrados() # LISTA OS PRODUTOS CADASTRADOS NO SISTEMA ok
             elif self.op == 5:
-                input("A ser desenvolvido") # BREAKPOINT !!!!
+                venda.CadastrarVendas() # OK CADASTRO DE VENDAS
             elif self.op == 6:
-                input("A ser desenvolvido")
+                venda.MostrarVendas() # OK LISTAR TODAS AS VENDAS FEITAS NA LOJA
             elif self.op == 7:
-                consulta.MenuConsultas()
+                consulta.MenuConsultas() 
             elif self.op == 8:
                 x = True
             else:
