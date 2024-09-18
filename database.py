@@ -16,12 +16,10 @@ class db():
         if self.db:
             self.db.close()
             
-            
     # CLIENTES
     #
     #
     # CLIENTES
-    
 
     def TabelaCLientes(self): # CRIAR A TABELA CLIENTES NO BANCO DE DADOS
         self.cursor.execute('''CREATE TABLE IF NOT EXISTS Clientes (
@@ -88,7 +86,22 @@ class db():
             return self.linha   
         else:
             return None
+        
+    def BuscarCliente2(self, cliente_codigo):    
+        self.ConnectDB() # Conecta ao banco
+        self.cursor.execute("SELECT cod_cliente FROM Clientes WHERE cod_cliente = ?", (cliente_codigo,))
+        self.linha = self.cursor.fetchone() # BUSCA UMA INSTÂNCIA EM ESPECÍFICO    
+        # Fazer a busca do cliente
+        if self.linha:
+            return self.linha[0] # É UMA TUPLA E O CODIGO ESTA NO PRIMEIRO INDICE 
+        else:
+            return None
     
+    def ExcluirCliente(self, cliente_codigo):
+        self.ConnectDB()
+        self.cursor.execute("DELETE FROM Clientes WHERE cod_cliente = ?", (cliente_codigo,))
+        self.db.commit()
+            
     # PRODUTOS
     #
     #
@@ -154,7 +167,19 @@ class db():
         self.cursor.execute('''UPDATE Produtos SET valor_unit = ? WHERE cod_produto = ?''', (valor_unitario, cod_produto))
         self.db.commit()
         
+    # MÉTODO PARA EXCLUIR UM PRODUTO DA TABELA PRODUTOS
+    def ExcluirProduto(self, cod_produto):
+        self.ConnectDB()
+        self.cursor.execute("DELETE FROM Produtos WHERE cod_produto = ?", (cod_produto,))
+        self.db.commit()
+        
+    # VENDAS
+    #
+    #
+    # VENDAS
+        
     def TabelaVendas(self):
+        self.ConnectDB()
         self.cursor.execute('''CREATE TABLE IF NOT EXISTS Vendas (
             cod_venda INTEGER PRIMARY KEY,
             cod_cliente INTEGER,
@@ -167,5 +192,16 @@ class db():
             )
             ''')
         
+    def InsertVendas(self, cod_venda, cod_cliente, cod_produto, quantidade, valor_total):
+        self.ConnectDB()
+        self.cursor.execute('''INSERT INTO Vendas (cod_venda, cod_cliente, cod_produto, quantidade, valor_total) VALUES (
+                                ?,?,?,?,?)''', (cod_venda, cod_cliente, cod_produto, quantidade, valor_total))
+        self.db.commit()
+        
+    # MÉTODO PARA BUSCAR TODOS AS VENDAS REALIZADAS NA TABELA VENDAS
+    def QueryTabelaVendas(self):
+        self.ConnectDB()
+        self.cursor.execute('''SELECT cod_venda, cod_cliente, cod_produto, quantidade, valor_total FROM Vendas''')
+        self.linhas = self.cursor.fetchall()
     
         
