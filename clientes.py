@@ -1,4 +1,5 @@
 import os
+import time
 import random
 from database import db
 
@@ -61,7 +62,7 @@ class Clientes(db): # CLASSE MÃE (db) -> CLASSE FILHA Clientes
         for linha in self.linhas:
             cod_cliente, nome, email, telefone, cpf, situacao = linha
             print(f"{cod_cliente:<7} {nome:<28} {email:<25} {telefone:<18} {cpf:<20} {situacao:<10}")
-        input()
+        input("Pressione Enter para continuar...")
         
     # PARA MODIFICAR OS DADOS DO CLIENTE CADASTRADO (CPF, NOME, EMAIL, SITUAÇÃO)
     def EditarDadosCliente(self, opcao_consulta, dados_cliente):
